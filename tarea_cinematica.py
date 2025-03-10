@@ -21,7 +21,7 @@ kuka = rtb.DHRobot([
 # Definir las configuraciones de las articulaciones
 config_1 = np.radians([0, 0, 0, 0, 0, 0, 0])  # Todas en 0°
 config_2 = np.radians([45, -45, 45, -45, 45, -45, 45])  # Alternadas 45° y -45°
-config_3 = np.radians([30, -60, 45, -30, 60, -45, 15])  # Configuración sugerida
+config_3 = np.radians([90, -90, 90, -90, 90, -90, 90])
 
 # Calcular la cinemática directa
 T1 = kuka.fkine(config_1)
