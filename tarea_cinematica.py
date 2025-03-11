@@ -3,9 +3,8 @@ import numpy as np
 from spatialmath import SE3
 import sympy as sp
 
-# Función para calcular la matriz de transformación homogénea A_i
 def transformation_matrix(theta_i, d_i, a_i, alpha_i):
-    alpha_i = np.radians(alpha_i)  # Convertir a radianes
+    alpha_i = np.radians(alpha_i)  
     return np.array([
         [np.cos(theta_i), -np.sin(theta_i) * np.cos(alpha_i), np.sin(theta_i) * np.sin(alpha_i), a_i * np.cos(theta_i)],
         [np.sin(theta_i), np.cos(theta_i) * np.cos(alpha_i), -np.cos(theta_i) * np.sin(alpha_i), a_i * np.sin(theta_i)],
@@ -13,7 +12,7 @@ def transformation_matrix(theta_i, d_i, a_i, alpha_i):
         [0, 0, 0, 1]
     ])
 def transformation_matrix_sym(theta_i, d_i, a_i, alpha_i):
-    alpha_i = sp.rad(alpha_i)  # Convertir a radianes
+    alpha_i = sp.rad(alpha_i)  
     theta_i = sp.rad(theta_i)
     return sp.Matrix([
         [sp.cos(theta_i), -sp.sin(theta_i) * sp.cos(alpha_i), sp.sin(theta_i) * sp.sin(alpha_i), a_i * sp.cos(theta_i)],
@@ -22,9 +21,9 @@ def transformation_matrix_sym(theta_i, d_i, a_i, alpha_i):
         [0, 0, 0, 1]
     ])
 # Definir los parámetros DH para el KUKA LBR iiwa 7 R800
-a = [0, 280, 240, 0, 0, 0, 0]  # Longitudes de los eslabones (mm)
-d = [340, 0, 0, 280, 0, 200, 0]  # Desplazamientos en z (mm)
-alpha = [-90, 0, -90, 90, -90, 90, 0]  # Ángulos en grados
+a = [0, 280, 240, 0, 0, 0, 0]  
+d = [340, 0, 0, 280, 0, 200, 0]  
+alpha = [-90, 0, -90, 90, -90, 90, 0] 
 
 # Crear el modelo DH del robot
 kuka = rtb.DHRobot([
